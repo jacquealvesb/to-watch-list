@@ -1,0 +1,6 @@
+framework module Pods_to_watch_list_combine {
+  umbrella header "Pods-to-watch-list-combine-umbrella.h"
+
+  export *
+  module * { export * }
+}
