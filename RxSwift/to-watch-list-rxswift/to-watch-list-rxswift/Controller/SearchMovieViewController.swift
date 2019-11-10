@@ -13,6 +13,19 @@ class SearchMovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.layout()
+    }
+    
+    func layout() {
+        // Set background color
+        self.view.backgroundColor = .white
+
+        // Set Search controller
+        self.title = "Search"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let search = UISearchController(searchResultsController: nil)
+//        search.searchResultsUpdater = self
+        self.navigationItem.searchController = search
     }
 }
