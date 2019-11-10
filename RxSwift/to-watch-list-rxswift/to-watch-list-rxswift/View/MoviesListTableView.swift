@@ -26,7 +26,7 @@ extension MoviesListTableView {
                 self.topAnchor.constraint(equalTo: parent.topAnchor),
                 self.bottomAnchor.constraint(equalTo: parent.bottomAnchor),
                 self.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 10),
-                self.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: 10)
+                self.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -10)
             ])
         }
     }
