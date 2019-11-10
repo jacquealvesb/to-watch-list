@@ -14,8 +14,8 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         // Create View Controllers
-        let movieListViewController = MovieListViewController()
-        let searchMovieViewController = SearchMovieViewController()
+        let movieListViewController = UINavigationController(rootViewController: MovieListViewController())
+        let searchMovieViewController = UINavigationController(rootViewController: SearchMovieViewController())
         
         // Set the View Controller tab items
         movieListViewController.tabBarItem = UITabBarItem(title: "Movies", image: UIImage.init(systemName: "film"), tag: 0)

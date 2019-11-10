@@ -27,13 +27,11 @@ class MovieListViewController: UIViewController {
         self.view.backgroundColor = .white
         
         // Set segment controller buttons
-        if let viewController = self.parent as? TabBarViewController {
-            let items = ["To Watch", "Watched"]
-            
-            segmentedController = UISegmentedControl(items: items)
-            segmentedController.selectedSegmentIndex = 0
-            
-            viewController.navigationItem.titleView = segmentedController
-        }
+        let items = ["To Watch", "Watched"]
+        
+        segmentedController = UISegmentedControl(items: items)
+        segmentedController.selectedSegmentIndex = 0
+        
+        self.navigationItem.titleView = segmentedController
     }
 }
