@@ -9,10 +9,31 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
-
+    // Objects
+    var segmentedController: UISegmentedControl!
+    var tableView: MoviesListTableView = MoviesListTableView(frame: CGRect.zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.layout()
+        
+        // Add table view to screen
+        self.view.addSubview(tableView)
+    }
+    
+    func layout() {
+        // Set background color
+        self.view.backgroundColor = .white
+        
+        // Set segment controller buttons
+        if let viewController = self.parent as? TabBarViewController {
+            let items = ["To Watch", "Watched"]
+            
+            segmentedController = UISegmentedControl(items: items)
+            segmentedController.selectedSegmentIndex = 0
+            
+            viewController.navigationItem.titleView = segmentedController
+        }
     }
 }
