@@ -18,6 +18,7 @@
 		17E6CBBF23784335008D67AC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBBC23784335008D67AC /* TabBarViewController.swift */; };
 		17E6CBC223784658008D67AC /* MovieStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBC023784658008D67AC /* MovieStatus.swift */; };
 		17E6CBC323784658008D67AC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBC123784658008D67AC /* Movie.swift */; };
+		17E6CBC523784684008D67AC /* MovieCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBC423784684008D67AC /* MovieCellViewModel.swift */; };
 		42C46C80720C3449F2FF811C /* Pods_to_watch_list_rxswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746A0AAC6D7A70188BB64A47 /* Pods_to_watch_list_rxswift.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		17E6CBBC23784335008D67AC /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		17E6CBC023784658008D67AC /* MovieStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieStatus.swift; sourceTree = "<group>"; };
 		17E6CBC123784658008D67AC /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		17E6CBC423784684008D67AC /* MovieCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCellViewModel.swift; sourceTree = "<group>"; };
 		746A0AAC6D7A70188BB64A47 /* Pods_to_watch_list_rxswift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_to_watch_list_rxswift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9111741C20F64C1A33D918 /* Pods-to-watch-list-rxswift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-to-watch-list-rxswift.debug.xcconfig"; path = "Target Support Files/Pods-to-watch-list-rxswift/Pods-to-watch-list-rxswift.debug.xcconfig"; sourceTree = "<group>"; };
 		C029545675C7235996C4286A /* Pods-to-watch-list-rxswift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-to-watch-list-rxswift.release.xcconfig"; path = "Target Support Files/Pods-to-watch-list-rxswift/Pods-to-watch-list-rxswift.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				17C2E246235F5A2F00B497E7 /* LaunchScreen.storyboard */,
+				17E6CBC423784684008D67AC /* MovieCellViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				17E6CBC223784658008D67AC /* MovieStatus.swift in Sources */,
 				17E6CBBF23784335008D67AC /* TabBarViewController.swift in Sources */,
 				17E6CBC323784658008D67AC /* Movie.swift in Sources */,
+				17E6CBC523784684008D67AC /* MovieCellViewModel.swift in Sources */,
 				17C2E243235F5A2C00B497E7 /* to_watch_list_rxswift.xcdatamodeld in Sources */,
 				179DF2C5235F5D8200C31EE0 /* Config.swift in Sources */,
 				17C2E239235F5A2C00B497E7 /* AppDelegate.swift in Sources */,
