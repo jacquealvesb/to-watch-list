@@ -14,7 +14,7 @@ class MovieToWatchCell: UITableViewCell, MovieCell {
     var overviewLabel: UILabel = UILabel(frame: CGRect.zero)
     var releaseDateLabel: UILabel = UILabel(frame: CGRect.zero)
     
-    var viewModel: MovieCellViewModel! {
+    var viewModel: MovieViewModel! {
         didSet {
             if let data = self.viewModel.poster, let poster = UIImage(data: data) {
                 self.posterImageView.image = poster

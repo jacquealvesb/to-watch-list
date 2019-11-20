@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MovieCellViewModel {
+class MovieViewModel {
     private var movie: Movie
     
     private static let dateFormatter: DateFormatter = {
@@ -30,7 +30,7 @@ class MovieCellViewModel {
     }
     
     var releaseDate: String {
-        return MovieCellViewModel.dateFormatter.string(from: movie.releaseDate)
+        return MovieViewModel.dateFormatter.string(from: movie.releaseDate)
     }
     
     var review: String {
@@ -39,7 +39,7 @@ class MovieCellViewModel {
     
     var watchedDate: String {
         guard let watchedDate = movie.watchedDate else { return "" }
-        return MovieCellViewModel.dateFormatter.string(from: watchedDate)
+        return "Watched on " + MovieViewModel.dateFormatter.string(from: watchedDate)
     }
     
     var rating: String {
@@ -48,6 +48,14 @@ class MovieCellViewModel {
             return acc + "⭐️"
         }
         return ratingText
+    }
+    
+    var watched: Bool {
+        return movie.status == .watched
+    }
+    
+    var wantToWatch: Bool {
+        return movie.status == .toWatch
     }
     
     init(movie: Movie) {

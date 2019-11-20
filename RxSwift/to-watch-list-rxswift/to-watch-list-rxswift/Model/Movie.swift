@@ -17,4 +17,15 @@ struct Movie {
     var review: String?
     var watchedDate: Date?
     var rating: Int?
+    
+    init(poster: Data?, name: String, overview: String, releaseDate: Date, status: MovieStatus, review: String? = nil, watchedDate: Date? = nil, rating: Int? = nil) {
+        self.poster = poster
+        self.name = name
+        self.overview = overview
+        self.releaseDate = releaseDate
+        self.status = status
+        self.review = review
+        self.watchedDate = watchedDate
+        self.rating = rating
+    }
 }
