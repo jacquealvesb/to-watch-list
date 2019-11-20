@@ -32,7 +32,7 @@ class MovieListViewController: UIViewController {
         let items = ["To Watch", "Watched"]
         
         segmentedController = UISegmentedControl(items: items)
-        segmentedController.selectedSegmentIndex = 1
+        segmentedController.selectedSegmentIndex = 0
         
         self.navigationItem.titleView = segmentedController
     }
