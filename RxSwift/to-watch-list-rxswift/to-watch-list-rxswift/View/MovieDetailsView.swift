@@ -21,14 +21,12 @@ class MovieDetailsView: UIView {
     
     var viewModel: MovieViewModel! {
         didSet {
-            if let data = self.viewModel.poster, let poster = UIImage(data: data) {
-                self.posterImageView.image = poster
-            }
             self.overviewLabel.text = self.viewModel.overview
             self.releaseDateLabel.text = self.viewModel.releaseDate
             self.ratingLabel.text = self.viewModel.rating
             self.reviewLabel.text = self.viewModel.review
             self.watchedDateLabel.text = self.viewModel.watchedDate
+            self.downloadImage()
         }
     }
 
@@ -117,6 +115,16 @@ class MovieDetailsView: UIView {
         self.wantToWatchButton.setTitleColor(.systemBlue, for: .normal)
         
         self.addSubview(wantToWatchButton)
+    }
+    
+    func downloadImage() {
+        URLSession.shared.dataTask(with: self.viewModel.posterURL) { (data, _, _) in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.posterImageView.image = UIImage(data: data)
+                }
+            }
+        }.resume()
     }
 }
 

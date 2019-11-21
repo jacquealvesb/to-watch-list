@@ -13,6 +13,8 @@ class MoviesListTableView: UITableView {
         super.didMoveToSuperview()
         
         self.setConstraints()
+        self.rowHeight = 120
+        self.separatorStyle = .none
     }
 }
 

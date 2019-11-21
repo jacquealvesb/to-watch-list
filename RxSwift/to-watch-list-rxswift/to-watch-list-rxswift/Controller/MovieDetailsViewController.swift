@@ -12,11 +12,11 @@ class MovieDetailsViewController: UIViewController {
     var viewModel: MovieDetailsViewModel!
     var detailsView: MovieDetailsView = MovieDetailsView(frame: CGRect.zero)
     
-    convenience init(movie: Movie) {
+    convenience init(movieViewModel: MovieViewModel) {
         self.init()
         
-        self.viewModel = MovieDetailsViewModel(movie: movie)
-        self.detailsView.viewModel = self.viewModel.movieViewModel
+        self.viewModel = MovieDetailsViewModel(viewModel: movieViewModel)
+        self.detailsView.viewModel = movieViewModel
     }
 
     override func viewDidLoad() {
@@ -31,6 +31,7 @@ class MovieDetailsViewController: UIViewController {
         
         // Set navbar title
         self.navigationItem.title = self.viewModel.title
+        self.navigationItem.largeTitleDisplayMode = .never
         
         // Setup view
         self.view.addSubview(detailsView)

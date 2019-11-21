@@ -10,20 +10,18 @@ import UIKit
 
 class WatchedMovieCell: UITableViewCell, MovieCell {
     var posterImageView: UIImageView = UIImageView(frame: CGRect.zero)
-    var nameLabel: UILabel = UILabel(frame: CGRect.zero)
+    var titleLabel: UILabel = UILabel(frame: CGRect.zero)
     var reviewLabel: UILabel = UILabel(frame: CGRect.zero)
     var watchedDateLabel: UILabel = UILabel(frame: CGRect.zero)
     var ratingLabel: UILabel = UILabel(frame: CGRect.zero)
     
     var viewModel: MovieViewModel! {
         didSet {
-            if let data = self.viewModel.poster, let poster = UIImage(data: data) {
-                self.posterImageView.image = poster
-            }
-            self.nameLabel.text = self.viewModel.name
+            self.titleLabel.text = self.viewModel.title
             self.reviewLabel.text = self.viewModel.review
             self.watchedDateLabel.text = self.viewModel.watchedDate
             self.ratingLabel.text = self.viewModel.rating
+            self.downloadImage()
         }
     }
     
@@ -36,7 +34,7 @@ class WatchedMovieCell: UITableViewCell, MovieCell {
     
     func layout() {
         self.setupPoster()
-        self.setupName()
+        self.setupTitle()
         self.setupReview()
         self.setupWatchedDate()
         self.setupRating()
@@ -49,10 +47,10 @@ class WatchedMovieCell: UITableViewCell, MovieCell {
         self.addSubview(posterImageView)
     }
     
-    func setupName() {
-        self.nameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+    func setupTitle() {
+        self.titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         
-        self.addSubview(nameLabel)
+        self.addSubview(titleLabel)
     }
     
     func setupReview() {
@@ -74,13 +72,23 @@ class WatchedMovieCell: UITableViewCell, MovieCell {
         
         self.addSubview(ratingLabel)
     }
+    
+    func downloadImage() {
+        URLSession.shared.dataTask(with: self.viewModel.posterURL) { (data, _, _) in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.posterImageView.image = UIImage(data: data)
+                }
+            }
+        }.resume()
+    }
 }
 
 // MARK: - Constraints
 extension WatchedMovieCell {
     func setConstraints() {
         self.setPosterContraints()
-        self.setNameConstraints()
+        self.setTitleConstraints()
         self.setRatingConstraints()
         self.setWatchedDateConstraints()
         self.setReviewConstraints()
@@ -96,14 +104,14 @@ extension WatchedMovieCell {
         ])
     }
     
-    func setNameConstraints() {
-        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+    func setTitleConstraints() {
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.nameLabel.topAnchor.constraint(equalTo: self.posterImageView.topAnchor),
-            self.nameLabel.heightAnchor.constraint(equalToConstant: 20),
-            self.nameLabel.leadingAnchor.constraint(equalTo: self.posterImageView.trailingAnchor, constant: 10),
-            self.nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+            self.titleLabel.topAnchor.constraint(equalTo: self.posterImageView.topAnchor),
+            self.titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.posterImageView.trailingAnchor, constant: 10),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
     }
     
@@ -133,7 +141,7 @@ extension WatchedMovieCell {
         self.reviewLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.reviewLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 5),
+            self.reviewLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 5),
             self.reviewLabel.leadingAnchor.constraint(equalTo: self.posterImageView.trailingAnchor, constant: 10),
             self.reviewLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])

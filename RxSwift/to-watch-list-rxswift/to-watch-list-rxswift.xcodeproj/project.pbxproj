@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172DA6CD2386B1E2001F0FA3 /* TMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DA6CC2386B1E2001F0FA3 /* TMDBService.swift */; };
+		172DA6CF2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DA6CE2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift */; };
 		17610AF023855F1800EA953A /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17610AEF23855F1800EA953A /* MovieListViewModel.swift */; };
 		17610AF2238562ED00EA953A /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17610AF1238562ED00EA953A /* MovieDetailsViewModel.swift */; };
 		17610AF42385633600EA953A /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17610AF32385633600EA953A /* MovieDetailsViewController.swift */; };
@@ -20,7 +22,6 @@
 		17E6CBBD23784335008D67AC /* SearchMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBBA23784335008D67AC /* SearchMovieViewController.swift */; };
 		17E6CBBE23784335008D67AC /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBBB23784335008D67AC /* MovieListViewController.swift */; };
 		17E6CBBF23784335008D67AC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBBC23784335008D67AC /* TabBarViewController.swift */; };
-		17E6CBC223784658008D67AC /* MovieStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBC023784658008D67AC /* MovieStatus.swift */; };
 		17E6CBC323784658008D67AC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBC123784658008D67AC /* Movie.swift */; };
 		17E6CBC523784684008D67AC /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBC423784684008D67AC /* MovieViewModel.swift */; };
 		17E6CBCA237846E3008D67AC /* WatchedMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6CBC6237846E3008D67AC /* WatchedMovieCell.swift */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		172DA6CC2386B1E2001F0FA3 /* TMDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBService.swift; sourceTree = "<group>"; };
+		172DA6CE2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewViewModel.swift; sourceTree = "<group>"; };
 		17610AEF23855F1800EA953A /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		17610AF1238562ED00EA953A /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		17610AF32385633600EA953A /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +49,6 @@
 		17E6CBBA23784335008D67AC /* SearchMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMovieViewController.swift; sourceTree = "<group>"; };
 		17E6CBBB23784335008D67AC /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		17E6CBBC23784335008D67AC /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		17E6CBC023784658008D67AC /* MovieStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieStatus.swift; sourceTree = "<group>"; };
 		17E6CBC123784658008D67AC /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		17E6CBC423784684008D67AC /* MovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		17E6CBC6237846E3008D67AC /* WatchedMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchedMovieCell.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172DA6CB2386B1D1001F0FA3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				172DA6CC2386B1E2001F0FA3 /* TMDBService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		179DF2C0235F5BAD00C31EE0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 				17E6CBC423784684008D67AC /* MovieViewModel.swift */,
 				17610AEF23855F1800EA953A /* MovieListViewModel.swift */,
 				17610AF1238562ED00EA953A /* MovieDetailsViewModel.swift */,
+				172DA6CE2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -109,7 +120,6 @@
 			children = (
 				179DF2C4235F5D8200C31EE0 /* Config.swift */,
 				17E6CBC123784658008D67AC /* Movie.swift */,
-				17E6CBC023784658008D67AC /* MovieStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +149,7 @@
 				179DF2C2235F5BBB00C31EE0 /* View */,
 				179DF2C1235F5BB500C31EE0 /* ViewModel */,
 				179DF2C0235F5BAD00C31EE0 /* Controller */,
+				172DA6CB2386B1D1001F0FA3 /* Service */,
 				17C2E238235F5A2C00B497E7 /* AppDelegate.swift */,
 				17C2E23A235F5A2C00B497E7 /* SceneDelegate.swift */,
 				17C2E244235F5A2F00B497E7 /* Assets.xcassets */,
@@ -177,6 +188,7 @@
 				17C2E232235F5A2C00B497E7 /* Frameworks */,
 				17C2E233235F5A2C00B497E7 /* Resources */,
 				179DF2C9235FDEAF00C31EE0 /* SwiftLint */,
+				D799BAB4345126731D10524B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -273,6 +285,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D799BAB4345126731D10524B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-to-watch-list-rxswift/Pods-to-watch-list-rxswift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-to-watch-list-rxswift/Pods-to-watch-list-rxswift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-to-watch-list-rxswift/Pods-to-watch-list-rxswift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -281,13 +310,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				17E6CBCC237846E3008D67AC /* MoviesListTableView.swift in Sources */,
-				17E6CBC223784658008D67AC /* MovieStatus.swift in Sources */,
 				17E6CBBF23784335008D67AC /* TabBarViewController.swift in Sources */,
 				17E6CBCB237846E3008D67AC /* MovieCell.swift in Sources */,
 				17E6CBC323784658008D67AC /* Movie.swift in Sources */,
 				17E6CBC523784684008D67AC /* MovieViewModel.swift in Sources */,
 				17610AF62385655C00EA953A /* MovieDetailsView.swift in Sources */,
 				17C2E243235F5A2C00B497E7 /* to_watch_list_rxswift.xcdatamodeld in Sources */,
+				172DA6CF2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift in Sources */,
 				17E6CBCD237846E3008D67AC /* MovieToWatchCell.swift in Sources */,
 				17610AF2238562ED00EA953A /* MovieDetailsViewModel.swift in Sources */,
 				179DF2C5235F5D8200C31EE0 /* Config.swift in Sources */,
@@ -297,6 +326,7 @@
 				17C2E23B235F5A2C00B497E7 /* SceneDelegate.swift in Sources */,
 				17E6CBBD23784335008D67AC /* SearchMovieViewController.swift in Sources */,
 				17610AF023855F1800EA953A /* MovieListViewModel.swift in Sources */,
+				172DA6CD2386B1E2001F0FA3 /* TMDBService.swift in Sources */,
 				17610AF42385633600EA953A /* MovieDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

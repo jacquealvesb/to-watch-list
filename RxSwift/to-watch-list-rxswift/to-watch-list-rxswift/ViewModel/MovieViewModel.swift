@@ -17,12 +17,12 @@ class MovieViewModel {
         return $0
     }(DateFormatter())
     
-    var poster: Data? {
-        return movie.poster
+    var posterURL: URL {
+        return movie.posterURL
     }
     
-    var name: String {
-        return movie.name
+    var title: String {
+        return movie.title
     }
     
     var overview: String {

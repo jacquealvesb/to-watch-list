@@ -10,7 +10,7 @@ import UIKit
 
 protocol MovieCell: UITableViewCell {
     var posterImageView: UIImageView { get set }
-    var nameLabel: UILabel { get set }
+    var titleLabel: UILabel { get set }
     var viewModel: MovieViewModel! { get set }
     
     func setConstraints()

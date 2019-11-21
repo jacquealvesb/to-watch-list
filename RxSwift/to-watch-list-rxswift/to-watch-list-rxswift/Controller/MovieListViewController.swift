@@ -95,7 +95,7 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let detailsView = MovieDetailsViewController(movie: movie)
-        navigationController?.pushViewController(detailsView, animated: true)
+//        let detailsView = MovieDetailsViewController(movie: movie)
+//        navigationController?.pushViewController(detailsView, animated: true)
     }
 }
