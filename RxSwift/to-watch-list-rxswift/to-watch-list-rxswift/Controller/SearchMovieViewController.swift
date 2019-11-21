@@ -7,18 +7,47 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchMovieViewController: UIViewController {
+    // Objects
     var tableView: MoviesListTableView = MoviesListTableView(frame: CGRect.zero)
     var infoLabel: UILabel = UILabel(frame: CGRect.zero)
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect.zero)
 
+    // Variables
+    var viewModel: SearchMovieViewViewModel!
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.layout()
-        self.setConstraints()
+        
+        let searchBar = self.navigationItem.searchController!.searchBar
+        // Create view model
+        self.viewModel = SearchMovieViewViewModel(query: searchBar.rx.text.orEmpty.asDriver(), tmdbService: TMDBService.shared)
+        
+        // Handle keyboard resign
+        searchBar.rx.searchButtonClicked
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [unowned searchBar] in
+                searchBar.resignFirstResponder()
+            }).disposed(by: disposeBag)
+        
+        searchBar.rx.cancelButtonClicked
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [unowned searchBar] in
+                searchBar.resignFirstResponder()
+            }).disposed(by: disposeBag)
+        
+        // Setup subviews
         self.setupTableView()
+        self.setupInfoLabel()
+        self.setupActivityIndicator()
+        
+        self.setConstraints()
     }
     
     func layout() {
@@ -32,10 +61,6 @@ class SearchMovieViewController: UIViewController {
         let search = UISearchController(searchResultsController: nil)
 //        search.searchResultsUpdater = self
         self.navigationItem.searchController = search
-        
-        // Setup subviews
-        self.setupInfoLabel()
-        self.setupActivityIndicator()
     }
     
     func setupInfoLabel() {
@@ -44,16 +69,51 @@ class SearchMovieViewController: UIViewController {
         self.infoLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.infoLabel.textColor = UIColor.secondaryLabel
         self.infoLabel.textAlignment = .center
+        
+        self.viewModel.info
+            .drive(onNext: { [unowned self] info in
+                self.infoLabel.isHidden = !self.viewModel.hasInfo
+                self.infoLabel.text = info
+            }).disposed(by: disposeBag)
     }
     
     func setupActivityIndicator() {
         self.view.addSubview(activityIndicator)
         
-        self.activityIndicator.startAnimating()
+        self.viewModel.isFetching
+            .drive(self.activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
     }
     
     func setupTableView() {
         self.view.addSubview(tableView)
+        
+        self.tableView.register(MovieToWatchCell.self, forCellReuseIdentifier: "MovieToWatchCell")
+        self.tableView.dataSource = self
+        
+        self.viewModel.movies
+            .drive(onNext: { [unowned self] _ in
+                self.tableView.reloadData()
+            }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: - TableView Data Source
+extension SearchMovieViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.numberOfMovies
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieToWatchCell", for: indexPath) as? MovieToWatchCell else {
+            return UITableViewCell()
+        }
+        
+        if let viewModel = viewModel.viewModelForMovie(at: indexPath.row) {
+            cell.viewModel = viewModel
+        }
+        
+        return cell
     }
 }
 

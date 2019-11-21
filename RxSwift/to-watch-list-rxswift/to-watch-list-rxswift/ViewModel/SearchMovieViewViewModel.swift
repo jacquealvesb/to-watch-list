@@ -55,7 +55,7 @@ class SearchMovieViewViewModel {
             }).disposed(by: disposeBag)
     }
     
-    private func viewModelForMovie(at index: Int) -> MovieViewModel? {
+    public func viewModelForMovie(at index: Int) -> MovieViewModel? {
         guard index < _movies.value.count else {
             return nil
         }
