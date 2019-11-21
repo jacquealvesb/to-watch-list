@@ -21,7 +21,7 @@ class MovieViewModel {
         return movie.posterURL
     }
     
-    var name: String {
+    var title: String {
         return movie.title
     }
     

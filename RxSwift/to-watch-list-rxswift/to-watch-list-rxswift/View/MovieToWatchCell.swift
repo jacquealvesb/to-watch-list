@@ -10,13 +10,13 @@ import UIKit
 
 class MovieToWatchCell: UITableViewCell, MovieCell {
     var posterImageView: UIImageView = UIImageView(frame: CGRect.zero)
-    var nameLabel: UILabel = UILabel(frame: CGRect.zero)
+    var titleLabel: UILabel = UILabel(frame: CGRect.zero)
     var overviewLabel: UILabel = UILabel(frame: CGRect.zero)
     var releaseDateLabel: UILabel = UILabel(frame: CGRect.zero)
     
     var viewModel: MovieViewModel! {
         didSet {
-            self.nameLabel.text = self.viewModel.name
+            self.titleLabel.text = self.viewModel.title
             self.overviewLabel.text = self.viewModel.overview
             self.releaseDateLabel.text = self.viewModel.releaseDate
             self.downloadImage()
@@ -32,7 +32,7 @@ class MovieToWatchCell: UITableViewCell, MovieCell {
     
     func layout() {
         self.setupPoster()
-        self.setupName()
+        self.setupTitle()
         self.setupOverview()
         self.setupReleaseDate()
     }
@@ -44,10 +44,10 @@ class MovieToWatchCell: UITableViewCell, MovieCell {
         self.addSubview(posterImageView)
     }
     
-    func setupName() {
-        self.nameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+    func setupTitle() {
+        self.titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         
-        self.addSubview(nameLabel)
+        self.addSubview(titleLabel)
     }
     
     func setupOverview() {
@@ -79,7 +79,7 @@ class MovieToWatchCell: UITableViewCell, MovieCell {
 extension MovieToWatchCell {
     func setConstraints() {
         self.setPosterContraints()
-        self.setNameConstraints()
+        self.setTitleConstraints()
         self.setReleaseDateConstraints()
         self.setOverviewConstraints()
     }
@@ -95,14 +95,14 @@ extension MovieToWatchCell {
         ])
     }
     
-    func setNameConstraints() {
-        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+    func setTitleConstraints() {
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.nameLabel.topAnchor.constraint(equalTo: self.posterImageView.topAnchor),
-            self.nameLabel.heightAnchor.constraint(equalToConstant: 20),
-            self.nameLabel.leadingAnchor.constraint(equalTo: self.posterImageView.trailingAnchor, constant: 10),
-            self.nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+            self.titleLabel.topAnchor.constraint(equalTo: self.posterImageView.topAnchor),
+            self.titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.posterImageView.trailingAnchor, constant: 10),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
     }
     
@@ -121,7 +121,7 @@ extension MovieToWatchCell {
         self.overviewLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.overviewLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 5),
+            self.overviewLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 5),
             self.overviewLabel.leadingAnchor.constraint(equalTo: self.posterImageView.trailingAnchor, constant: 10),
             self.overviewLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])

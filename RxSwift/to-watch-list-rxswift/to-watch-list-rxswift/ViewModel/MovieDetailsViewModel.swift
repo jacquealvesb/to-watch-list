@@ -12,7 +12,7 @@ class MovieDetailsViewModel {
     let viewModel: MovieViewModel
     
     var title: String {
-        return viewModel.name
+        return viewModel.title
     }
     
     init(viewModel: MovieViewModel) {
