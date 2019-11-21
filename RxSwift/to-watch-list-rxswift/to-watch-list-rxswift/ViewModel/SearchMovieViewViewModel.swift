@@ -74,8 +74,8 @@ class SearchMovieViewViewModel {
         self.tmdbService.searchMovie(query: query) { [weak self] (response, error) in
             self?._isFetching.accept(false) // Set fetching to false whrn receive completion
             
-            if let error = error { // Check if any error occured
-                self?._info.accept(error.localizedDescription)
+            if error != nil { // Check if any error occured
+                self?._info.accept("Something wrong happend")
                 return
             }
             
