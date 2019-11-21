@@ -76,9 +76,11 @@ class WatchedMovieCell: UITableViewCell, MovieCell {
     func downloadImage() {
         URLSession.shared.dataTask(with: self.viewModel.posterURL) { (data, _, _) in
             if let data = data {
-                self.imageView?.image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    self.posterImageView.image = UIImage(data: data)
+                }
             }
-        }
+        }.resume()
     }
 }
 

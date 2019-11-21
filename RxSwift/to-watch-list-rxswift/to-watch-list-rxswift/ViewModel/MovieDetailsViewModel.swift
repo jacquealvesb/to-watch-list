@@ -9,17 +9,13 @@
 import Foundation
 
 class MovieDetailsViewModel {
-    let movie: Movie
-    
-    var movieViewModel: MovieViewModel {
-        return MovieViewModel(movie: self.movie)
-    }
+    let viewModel: MovieViewModel
     
     var title: String {
-        return movie.title
+        return viewModel.name
     }
     
-    init(movie: Movie) {
-        self.movie = movie
+    init(viewModel: MovieViewModel) {
+        self.viewModel = viewModel
     }
 }
