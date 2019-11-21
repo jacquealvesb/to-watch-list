@@ -7,5 +7,7 @@ target 'to-watch-list-rxswift' do
 
   # Pods for to-watch-list-rxswift
   pod 'SwiftLint'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
 
 end
