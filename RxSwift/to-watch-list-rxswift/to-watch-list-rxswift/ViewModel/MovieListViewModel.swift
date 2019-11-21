@@ -18,11 +18,4 @@ class MovieListViewModel {
     var watchedMovies: [Movie] {
         return movies.filter { $0.status == .watched }
     }
-    
-    init() {
-        movies = [
-            Movie(poster: nil, name: "The Godfather", overview: "Um filme sobre isso e isso", releaseDate: Date(), status: .toWatch),
-            Movie(poster: nil, name: "The Godmother", overview: "Um filme sobre isso e isso", releaseDate: Date(), status: .watched, review: "Gostei pacas", watchedDate: Date(), rating: 4)
-        ]
-    }
 }

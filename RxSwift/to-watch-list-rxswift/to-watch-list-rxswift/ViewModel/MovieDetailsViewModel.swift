@@ -16,7 +16,7 @@ class MovieDetailsViewModel {
     }
     
     var title: String {
-        return movie.name
+        return movie.title
     }
     
     init(movie: Movie) {

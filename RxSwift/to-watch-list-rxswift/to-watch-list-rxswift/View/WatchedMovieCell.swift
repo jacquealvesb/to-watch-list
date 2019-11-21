@@ -17,9 +17,9 @@ class WatchedMovieCell: UITableViewCell, MovieCell {
     
     var viewModel: MovieViewModel! {
         didSet {
-            if let data = self.viewModel.poster, let poster = UIImage(data: data) {
-                self.posterImageView.image = poster
-            }
+//            if let data = self.viewModel.posterURL, let poster = UIImage(data: data) {
+//                self.posterImageView.image = poster
+//            }
             self.nameLabel.text = self.viewModel.name
             self.reviewLabel.text = self.viewModel.review
             self.watchedDateLabel.text = self.viewModel.watchedDate
