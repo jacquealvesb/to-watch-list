@@ -30,7 +30,8 @@ class MovieDetailsViewController: UIViewController {
         self.view.backgroundColor = .white
         
         // Set navbar title
-        self.title = self.viewModel.title
+        self.navigationItem.title = self.viewModel.title
+        self.navigationItem.largeTitleDisplayMode = .never
         
         // Setup view
         self.view.addSubview(detailsView)
