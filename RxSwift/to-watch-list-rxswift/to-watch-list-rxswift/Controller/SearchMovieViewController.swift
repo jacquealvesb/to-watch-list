@@ -44,6 +44,12 @@ class SearchMovieViewController: UIViewController {
                 searchBar.resignFirstResponder()
             }).disposed(by: disposeBag)
         
+        searchBar.rx.textDidEndEditing
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [unowned searchBar] in
+                searchBar.text = ""
+            }).disposed(by: disposeBag)
+        
         // Setup subviews
         self.setupTableView()
         self.setupInfoLabel()
