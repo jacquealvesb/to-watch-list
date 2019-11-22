@@ -7,57 +7,36 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import Combine
 
 class SearchMovieViewController: UIViewController {
     // Objects
     var tableView: MoviesListTableView = MoviesListTableView(frame: CGRect.zero)
     var infoLabel: UILabel = UILabel(frame: CGRect.zero)
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect.zero)
-
+    
     // Variables
     var viewModel: SearchMovieViewViewModel!
-    let disposeBag = DisposeBag()
-    
+    var query = PassthroughSubject<String?, Never>() // String written in search bar
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.layout()
         
-        let searchBar = self.navigationItem.searchController!.searchBar
         // Create view model
-        self.viewModel = SearchMovieViewViewModel(query: searchBar.rx.text.orEmpty.asDriver(), tmdbService: TMDBService.shared)
-        
-        // Handle keyboard resign
-        searchBar.rx.searchButtonClicked
-            .asDriver(onErrorJustReturn: ())
-            .drive(onNext: { [unowned searchBar] in
-                searchBar.text = ""
-                searchBar.resignFirstResponder()
-            }).disposed(by: disposeBag)
-        
-        searchBar.rx.cancelButtonClicked
-            .asDriver(onErrorJustReturn: ())
-            .drive(onNext: { [unowned searchBar] in
-                searchBar.text = ""
-                searchBar.resignFirstResponder()
-            }).disposed(by: disposeBag)
-        
-        searchBar.rx.textDidEndEditing
-            .asDriver(onErrorJustReturn: ())
-            .drive(onNext: { [unowned searchBar] in
-                searchBar.text = ""
-            }).disposed(by: disposeBag)
+        self.viewModel = SearchMovieViewViewModel(query: query.eraseToAnyPublisher(), // Send query string to be subscribed with search method
+                                                  tmdbService: TMDBService.shared)
         
         // Setup subviews
+        self.setupSearchBar()
         self.setupTableView()
         self.setupInfoLabel()
         self.setupActivityIndicator()
-        
+
         self.setConstraints()
     }
-    
+
     func layout() {
         // Set background color
         self.view.backgroundColor = .white
@@ -65,48 +44,82 @@ class SearchMovieViewController: UIViewController {
         // Set Search controller
         self.title = "Search"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let search = UISearchController(searchResultsController: nil)
-        search.obscuresBackgroundDuringPresentation = false
-//        search.searchResultsUpdater = self
-        self.navigationItem.searchController = search
     }
     
+    func setupSearchBar() {
+        let search = UISearchController(searchResultsController: nil)
+        search.obscuresBackgroundDuringPresentation = false
+        
+        self.navigationItem.searchController = search
+        self.navigationItem.searchController!.searchBar.delegate = self // Set the serach bar delegate to this
+        
+        self.query.send("")
+    }
+
     func setupInfoLabel() {
         self.view.addSubview(infoLabel)
         self.infoLabel.isUserInteractionEnabled = false
-        
+
         self.infoLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.infoLabel.textColor = UIColor.secondaryLabel
         self.infoLabel.textAlignment = .center
         
-        self.viewModel.info
-            .drive(onNext: { [unowned self] info in
+        _ = self.viewModel.$info // Listen to changes in info text and writes it to label
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] info in
                 self.infoLabel.isHidden = !self.viewModel.hasInfo
                 self.infoLabel.text = info
-            }).disposed(by: disposeBag)
+            }
     }
-    
+
     func setupActivityIndicator() {
         self.view.addSubview(activityIndicator)
         self.activityIndicator.isUserInteractionEnabled = false
         
-        self.viewModel.isFetching
-            .drive(self.activityIndicator.rx.isAnimating)
-            .disposed(by: disposeBag)
+        _ = self.viewModel.$isFetching // Listen to changes in isFetching and binds it to activity indicator animation
+            .receive(on: DispatchQueue.main)
+            .sink { (fetching) in
+                if fetching {
+                    self.activityIndicator.startAnimating()
+                } else {
+                    self.activityIndicator.stopAnimating()
+                }
+            }
     }
-    
+
     func setupTableView() {
         self.view.addSubview(tableView)
-        
+
         self.tableView.register(MovieToWatchCell.self, forCellReuseIdentifier: "MovieToWatchCell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        self.viewModel.movies
-            .drive(onNext: { [unowned self] _ in
+        _ = self.viewModel.$movies
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
                 self.tableView.reloadData()
-            }).disposed(by: disposeBag)
+            }
+    }
+}
+
+// MARK: - SearchBar
+extension SearchMovieViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.query.send(searchBar.text) // Send changes in query string value
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.query.send(searchBar.text) // Send changes in query string value
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
 }
 
