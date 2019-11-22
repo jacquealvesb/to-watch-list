@@ -120,6 +120,7 @@
 			children = (
 				179DF2C4235F5D8200C31EE0 /* Config.swift */,
 				17E6CBC123784658008D67AC /* Movie.swift */,
+				17C2E241235F5A2C00B497E7 /* to_watch_list_rxswift.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,7 +155,6 @@
 				17C2E23A235F5A2C00B497E7 /* SceneDelegate.swift */,
 				17C2E244235F5A2F00B497E7 /* Assets.xcassets */,
 				17C2E249235F5A2F00B497E7 /* Info.plist */,
-				17C2E241235F5A2C00B497E7 /* to_watch_list_rxswift.xcdatamodeld */,
 			);
 			path = "to-watch-list-rxswift";
 			sourceTree = "<group>";
