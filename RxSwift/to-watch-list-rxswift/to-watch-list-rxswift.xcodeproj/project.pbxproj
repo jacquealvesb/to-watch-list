@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		172DA6CD2386B1E2001F0FA3 /* TMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DA6CC2386B1E2001F0FA3 /* TMDBService.swift */; };
 		172DA6CF2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DA6CE2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift */; };
+		173A05B1238827D40000E39D /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173A05B0238827D40000E39D /* CoreDataService.swift */; };
 		17610AF023855F1800EA953A /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17610AEF23855F1800EA953A /* MovieListViewModel.swift */; };
 		17610AF2238562ED00EA953A /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17610AF1238562ED00EA953A /* MovieDetailsViewModel.swift */; };
 		17610AF42385633600EA953A /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17610AF32385633600EA953A /* MovieDetailsViewController.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		172DA6CC2386B1E2001F0FA3 /* TMDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBService.swift; sourceTree = "<group>"; };
 		172DA6CE2386BCA4001F0FA3 /* SearchMovieViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewViewModel.swift; sourceTree = "<group>"; };
+		173A05B0238827D40000E39D /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		17610AEF23855F1800EA953A /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		17610AF1238562ED00EA953A /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		17610AF32385633600EA953A /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				172DA6CC2386B1E2001F0FA3 /* TMDBService.swift */,
+				173A05B0238827D40000E39D /* CoreDataService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				17610AF2238562ED00EA953A /* MovieDetailsViewModel.swift in Sources */,
 				179DF2C5235F5D8200C31EE0 /* Config.swift in Sources */,
 				17C2E239235F5A2C00B497E7 /* AppDelegate.swift in Sources */,
+				173A05B1238827D40000E39D /* CoreDataService.swift in Sources */,
 				17E6CBCA237846E3008D67AC /* WatchedMovieCell.swift in Sources */,
 				17E6CBBE23784335008D67AC /* MovieListViewController.swift in Sources */,
 				17C2E23B235F5A2C00B497E7 /* SceneDelegate.swift in Sources */,
